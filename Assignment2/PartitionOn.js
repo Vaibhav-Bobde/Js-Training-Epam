@@ -1,7 +1,6 @@
 function partitionOn(pred, items) {
     var falseArray = [];
-    var trueArray = [];
-    var boundaryIndex;
+    var trueArray = [];    
     for (i of items) {
         if (pred(i)) {
             trueArray.push(i);
@@ -9,9 +8,8 @@ function partitionOn(pred, items) {
         else {
             falseArray.push(i);
         }
-    }
-    boundaryIndex = falseArray.length;
+    }    
     items.length = 0;
     Array.prototype.push.apply(items, falseArray.concat(trueArray));
-    return boundaryIndex;
+    return falseArray.length;
 }
