@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <style>
+        body {
+            background-color: bisque
+        }
+
+        input {
+            border-radius: 1px
+        }
+    </style>
+</head>
+<script type="text/javascript" src="..\..\Js-Training-Epam\YouTube WebApp\App.js"></script>
+
+<body background-color:bisque;>
+    <div style="width:initial; height:600px; text-align:center;">
+        <div>
+            <strong style="color:red"><span>Youtube Web App</span></strong>
+            <p/>
+            <input id="searchInput" type="text" style="width:500px; height:25px;" />
+            <button id="btn" style="width:75px; height:25px;color:red;">Search</button>
+        </div>
+        <div id="videoLst">
+
+        </div>  
+    </div>
+</body>
+<template id="tempVideo">
+    <div id='divVideo' style="width: 250px;display: table;border-style: double;border-radius: 25px;padding: 25px;">        <div class="divDetails">
+            <span>Title:</span><span class="title"></span>
+            <span>Channel:</span><span class="channel"></span>
+            <span>Published At:</span><span class="publishDate"></span>
+        </div>
+        <span class="description"></span>
+    </div>
+</template>
+
+</html>
