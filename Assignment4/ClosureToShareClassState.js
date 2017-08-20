@@ -1,5 +1,6 @@
 var Cat = (function () {
     var weights = {};
+
     function Constructor(name, weight) {
         if (!name || !weight) {
             throw Error('Must specify name and weight');
