@@ -1,0 +1,21 @@
+npm install --save-dev jasmine	Installs Jasmine
+npm install --save-dev karma	Installs Karma
+npm install --save-dev karma-jasmine karma-<browser>-launcher	
+	Installs Karma dependencies; replace <browser> with whatever you have installed, e.g. chrome, firefox, or ie.
+
+karma init -> to configure karma
+Create a configuration file for Karma using its built-in utility. On the command line, go to the folder for this exercise 
+and run karma init. This will ask you a series of questions:
+For the framework, press Tab until you see Jasmine
+For the files, enter js/**/*.js and test/**/*.js (matching the folders where we put our unit and unit test code, with ** meaning “include all subfolders”)
+For the browser, select whichever you have installed. Note that browser names in the configuration file are case-sensitive, for example Chrome, IE, or Firefox, whereas in their related npm package names they're lower case.
+Accept the defaults for everything else.
+
+
+https://taco.visualstudio.com/en-us/docs/unit-test-03-basic-testing/
+
+https://howtodoinjava.com/scripting/javascript/jasmine-javascript-unit-testing-tutorial/
+https://wannabeegeek.com/2017/04/07/debugging-jasmine-unit-tests-running-with-karma-runner-in-vs-code/
+
+Run karma test case:
+karma start --single-run

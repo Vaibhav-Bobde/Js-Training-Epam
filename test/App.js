@@ -217,3 +217,6 @@
            YoutubeApp.Elements.divPages.appendChild(anchorEle);
        }
    }
+   function hello(){
+	return true;
+   }
