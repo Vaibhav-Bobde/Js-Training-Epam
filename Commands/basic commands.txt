@@ -1,3 +1,8 @@
+git commands : 
+git status -v
+git add .
+git commit -m <'Check in name'>
+
 npm install --save-dev jasmine	Installs Jasmine
 npm install --save-dev karma	Installs Karma
 npm install --save-dev karma-jasmine karma-<browser>-launcher	
