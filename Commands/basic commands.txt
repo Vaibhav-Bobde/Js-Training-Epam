@@ -3,6 +3,12 @@ git status -v
 git add .
 git commit -m <'Check in name'>
 
+# Global installation 
+npm install -g jasmine
+
+# Global installation
+$ npm install -g karma
+
 npm install --save-dev jasmine	Installs Jasmine
 npm install --save-dev karma	Installs Karma
 npm install --save-dev karma-jasmine karma-<browser>-launcher	

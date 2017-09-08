@@ -9,7 +9,7 @@
        },
        VideoNums: {
            Desktop: 4,
-           Tablet : 2,
+           Tablet: 2,
            Mobile: 1
        },
        SearchObj: null,
@@ -188,7 +188,7 @@
            case 'tablet':
                videoPerPage = YoutubeApp.VideoNums.Tablet;
                break;
-            case 'mobile':
+           case 'mobile':
                videoPerPage = YoutubeApp.VideoNums.Mobile;
                break;
        }
