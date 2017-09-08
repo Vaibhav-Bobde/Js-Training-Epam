@@ -87,9 +87,9 @@
    }
 
    function initializeEvents() {
-       YoutubeApp.Elements.btn.onclick = btnEvent;
-       swipeFunc.init(YoutubeApp.Elements.divVideoLst);
-       window.onresize = resizeEvent;
+    //    YoutubeApp.Elements.btn.onclick = btnEvent;
+    //    swipeFunc.init(YoutubeApp.Elements.divVideoLst);
+    //    window.onresize = resizeEvent;
    }
 
    function btnEvent(e) {

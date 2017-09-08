@@ -1,11 +1,8 @@
 //import * as youtubeApp from '..\..\Js-Training-Epam\YouTube WebApp\App.js'
-var tasks = require(['App']);
-
-
-//hello
+///var tasks = require(['App']);
 //This is test suite
 describe("Test Suite", function() {
     it("test spec", function() {
-        expect( true ).toEqual(tasks.hello());
+        expect( true ).toEqual(hello());
     });
 }); 
