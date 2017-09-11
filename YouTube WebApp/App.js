@@ -9,14 +9,14 @@
        },
        VideoNums: {
            Desktop: 4,
-           Tablet : 2,
+           Tablet: 2,
            Mobile: 1
        },
        SearchObj: null,
        PageNum: 1,
        TotPages: null
    }
-
+    
    var swipeFunc = {
        touches: {
            "touchstart": {
@@ -46,7 +46,8 @@
                            swipeFunc.touches[event.type] = true;
                            if (swipeFunc.touches.touchstart.x > -1 && swipeFunc.touches.touchmove.x > -1) {
                                swipeFunc.touches.direction = swipeFunc.touches.touchstart.x < swipeFunc.touches.touchmove.x ? "right" : "left";
-                               setPageNumOnSwipe(swipeFunc.touches.direction)
+                               setPageNumOnSwipe(swipeFunc.touches.direction);
+                               adjustPaginationOnResize();
                            }
                        default:
                            break;
@@ -74,8 +75,7 @@
            case 'left':
                YoutubeApp.PageNum = YoutubeApp.PageNum === YoutubeApp.TotPages ? YoutubeApp.PageNum : YoutubeApp.PageNum + 1;
                break;
-       }
-       adjustPaginationOnResize();
+       }       
    }
 
    function initializeSelectors() {
@@ -87,7 +87,9 @@
    }
 
    function initializeEvents() {
-       YoutubeApp.Elements.btn.onclick = btnEvent;
+       if (YoutubeApp.Elements.btn) {
+           YoutubeApp.Elements.btn.onclick = btnEvent;
+       }
        swipeFunc.init(YoutubeApp.Elements.divVideoLst);
        window.onresize = resizeEvent;
    }
@@ -167,11 +169,11 @@
        }
    }
 
-   function checkResolutions() {
+   function checkResolutions(wnd) {
        var pagenum;
-       if (window.screen.availWidth <= 414 && window.screen.availHeight <= 736) {
+       if (wnd.screen.availWidth <= 414 && wnd.screen.availHeight <= 736) {
            pagenum = 'mobile';
-       } else if (window.screen.availWidth < 1366 && window.screen.availHeight <= 768) {
+       } else if (wnd.screen.availWidth < 1366 && wnd.screen.availHeight <= 768) {
            pagenum = 'tablet';
        } else {
            pagenum = 'desktop';
@@ -181,14 +183,14 @@
 
    function adjustPaginationOnResize() {
        var videoPerPage;
-       switch (checkResolutions()) {
+       switch (checkResolutions(window)) {
            case 'desktop':
                videoPerPage = YoutubeApp.VideoNums.Desktop;
                break;
            case 'tablet':
                videoPerPage = YoutubeApp.VideoNums.Tablet;
                break;
-            case 'mobile':
+           case 'mobile':
                videoPerPage = YoutubeApp.VideoNums.Mobile;
                break;
        }
