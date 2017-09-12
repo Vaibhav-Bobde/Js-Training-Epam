@@ -6,8 +6,18 @@ describe("Test Suite", function () {
     it("Get API Data as Not Null", function () {
         var searchText = 'javascript';
         var promise = service.getAPIData(searchText);
-        promise.then(function(){
-            expect(service.SearchObj).toEqual(hello());
-        });        
+        promise.then(function(){            
+            expect(service.SearchObj).toBe(null);
+        });
+    });
+    it("Check resolution", function () {
+        var wnd = {
+            screen:{
+                availWidth : 414,
+                availHeight : 736
+            }
+        }
+        var res = service.checkResolutions(wnd);
+        expect(res).toBe('mobile')
     });
 });

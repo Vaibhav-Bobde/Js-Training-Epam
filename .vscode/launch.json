@@ -1,7 +1,7 @@
 {
     "version": "0.2.0",
     "configurations": [
-        
+
         {
             "type": "chrome",
             "request": "launch",
@@ -14,6 +14,14 @@
             "request": "attach",
             "name": "Attach to Chrome",
             "port": 9222,
+            "webRoot": "${workspaceRoot}"
+        },
+        {
+            "name": "Debug tests in Chrome",
+            "type": "chrome",
+            "request": "attach",
+            "port": 9222,
+            "sourceMaps": true,
             "webRoot": "${workspaceRoot}"
         }
     ]
