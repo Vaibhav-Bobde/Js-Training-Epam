@@ -1,8 +1,13 @@
-//import * as youtubeApp from '..\..\Js-Training-Epam\YouTube WebApp\App.js'
-///var tasks = require(['App']);
-//This is test suite
-describe("Test Suite", function() {
-    it("test spec", function() {
-        expect( true ).toEqual(hello());
+describe("Test Suite", function () {
+    var service;
+    beforeEach(function () {
+        service = new Service();
     });
-}); 
+    it("Get API Data as Not Null", function () {
+        var searchText = 'javascript';
+        var promise = service.getAPIData(searchText);
+        promise.then(function(){
+            expect(service.SearchObj).toEqual(hello());
+        });        
+    });
+});

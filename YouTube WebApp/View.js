@@ -29,21 +29,20 @@
                    _this.btnEvent(_this);
                }
            }
-           swipeFunc.init(this.Elements.divVideoLst);
+           this.initSwipeEvents(this.Elements.divVideoLst);
            wnd.onresize = function () {
                _this.resizeEvent(_this);
            };
        },
        btnEvent: function (_this) {
            var promise = _this.Service.getAPIData(_this.Elements.searchInput.value, _this.adjustPaginationOnResize);
-           debugger;
            promise.then(function () {
                _this.adjustPaginationOnResize();
            });
        },
-       setPaginationEvent: function (_this) {
-           _this.PageNum = parseInt(this.innerText);
-           _this.adjustPaginationOnResize();
+       setPaginationEvent: function (pageNum) {
+           this.PageNum = parseInt(pageNum);
+           this.adjustPaginationOnResize();
        },
        renderVideoLst: function (searchResp) {
            this.Elements.divVideoLst.innerHTML = '';
@@ -98,7 +97,7 @@
                anchorEle.href = '#';
                anchorEle.innerText = index + 1;
                anchorEle.onclick = function () {
-                   this.setPaginationEvent(_this);
+                   _this.setPaginationEvent(this.innerText);
                }
                if (parseInt(anchorEle.innerText) === this.PageNum) {
                    anchorEle.className += 'active';
@@ -115,23 +114,28 @@
                    this.PageNum = this.PageNum === this.TotPages ? this.PageNum : this.PageNum + 1;
                    break;
            }
-       }
-   }
-
-   var swipeFunc = {
-       touches: {
-           "touchstart": {
-               "x": -1,
-               "y": -1
-           },
-           "touchmove": {
-               "x": -1,
-               "y": -1
-           },
-           "touchend": false,
-           "direction": "undetermined"
        },
-       touchHandler: function (event) {
+       swipeFunc: {
+           touches: {
+               "touchstart": {
+                   "x": -1,
+                   "y": -1
+               },
+               "touchmove": {
+                   "x": -1,
+                   "y": -1
+               },
+               "touchend": false,
+               "direction": "undetermined"
+           }
+       },
+       initSwipeEvents: function (ele) {
+           var _this = this;
+           ele.addEventListener('touchstart', function(event){ _this.touchHandler(event, _this);}, false);
+           ele.addEventListener('touchmove', function(event){ _this.touchHandler(event, _this);}, false);
+           ele.addEventListener('touchend', function(event){ _this.touchHandler(event, _this);}, false);
+       },
+       touchHandler: function (event, _this) {
            var touch;
            if (typeof event !== 'undefined') {
                event.preventDefault();
@@ -140,27 +144,21 @@
                    switch (event.type) {
                        case 'touchstart':
                        case 'touchmove':
-                           swipeFunc.touches[event.type].x = touch.pageX;
-                           swipeFunc.touches[event.type].y = touch.pageY;
+                           _this.swipeFunc.touches[event.type].x = touch.pageX;
+                           _this.swipeFunc.touches[event.type].y = touch.pageY;
                            break;
                        case 'touchend':
-                           swipeFunc.touches[event.type] = true;
-                           if (swipeFunc.touches.touchstart.x > -1 && swipeFunc.touches.touchmove.x > -1) {
-                               swipeFunc.touches.direction = swipeFunc.touches.touchstart.x < swipeFunc.touches.touchmove.x ? "right" : "left";
-                               this.setPageNumOnSwipe(swipeFunc.touches.direction);
-                               this.adjustPaginationOnResize();
+                           _this.swipeFunc.touches[event.type] = true;
+                           if (_this.swipeFunc.touches.touchstart.x > -1 && _this.swipeFunc.touches.touchmove.x > -1) {
+                               _this.swipeFunc.touches.direction = _this.swipeFunc.touches.touchstart.x < _this.swipeFunc.touches.touchmove.x ? "right" : "left";
+                               _this.setPageNumOnSwipe(_this.swipeFunc.touches.direction);
+                               _this.adjustPaginationOnResize();
                            }
                        default:
                            break;
                    }
                }
            }
-       },
-       init: function (ele) {
-           ele.addEventListener('touchstart', swipeFunc.touchHandler, false);
-           ele.addEventListener('touchmove', swipeFunc.touchHandler, false);
-           ele.addEventListener('touchend', swipeFunc.touchHandler, false);
        }
-   };
-
+   }
    var viewObj = new View(new Service());

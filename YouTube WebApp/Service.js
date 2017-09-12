@@ -8,7 +8,7 @@
        this.SearchObj = null;
    }
    Service.prototype = {
-       getAPIData: function (searchText, callback) {
+       getAPIData: function (searchText) {
            var _this = this;
            var apiKey = 'AIzaSyAMeGPYFUvoJxhIoXvHnrK_mQHK26b2_6w',
                promise = new Promise(function (fulfill, reject) {
@@ -24,17 +24,18 @@
                    xhttp.send();
                });
            return promise.then(function () {
-               var xhttp = new XMLHttpRequest();
-               xhttp.onreadystatechange = function () {
-                   if (this.readyState == 4 && this.status == 200) {
-                       _this.attachStatistics(JSON.parse(this.responseText));
-                       //callback();
-                       return;
+               return new Promise(function (fulfill, reject) {
+                   var xhttp = new XMLHttpRequest();
+                   xhttp.onreadystatechange = function () {
+                       if (this.readyState == 4 && this.status == 200) {
+                           _this.attachStatistics(JSON.parse(this.responseText));
+                           fulfill();
+                       }
                    }
-               }
-               xhttp.open("GET", "https://www.googleapis.com/youtube/v3/videos?key=" + _this.APIKey +
-                   "&id=" + _this.getConcatinatedVideoIds() + '&part=snippet,statistics', true);
-               xhttp.send();
+                   xhttp.open("GET", "https://www.googleapis.com/youtube/v3/videos?key=" + _this.APIKey +
+                       "&id=" + _this.getConcatinatedVideoIds() + '&part=snippet,statistics', true);
+                   xhttp.send();
+               });
            });
        },
        getConcatinatedVideoIds: function () {
