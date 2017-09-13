@@ -6,8 +6,9 @@ describe("Test Suite", function () {
     it("Get API Data as Not Null", function () {
         var searchText = 'javascript';
         var promise = service.getAPIData(searchText);
-        promise.then(function(){            
-            expect(service.SearchObj).toBe(null);
+        promise.then(function(){ 
+            expect(service.SearchObj).not.toBe(null);
+            done();
         });
     });
     it("Check resolution", function () {

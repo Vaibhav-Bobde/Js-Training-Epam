@@ -35,7 +35,7 @@
            };
        },
        btnEvent: function (_this) {
-           var promise = _this.Service.getAPIData(_this.Elements.searchInput.value, _this.adjustPaginationOnResize);
+           var promise = _this.Service.getAPIData(_this.Elements.searchInput.value);
            promise.then(function () {
                _this.adjustPaginationOnResize();
            });
