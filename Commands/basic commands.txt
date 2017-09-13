@@ -22,6 +22,8 @@ npm install -g jasmine
 $ npm install -g karma
 
 npm install --save-dev jasmine	Installs Jasmine
+
+npm install -g jasmine-node-debug
 npm install --save-dev karma	Installs Karma
 npm install --save-dev karma-jasmine karma-<browser>-launcher	
 	Installs Karma dependencies; replace <browser> with whatever you have installed, e.g. chrome, firefox, or ie.

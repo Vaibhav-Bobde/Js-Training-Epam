@@ -1,0 +1,14 @@
+{
+  "name": "js-training",
+  "version": "0.9.1",
+  "description": "JS training tasks",
+  "scripts": {
+    "test": "./node_modules/.bin/jasmine",
+    "test-debug": "./node_modules/.bin/jasmine --debug-brk"
+  },
+  "author": "aorgish",
+  "license": "MIT",
+  "devDependencies": {
+    "jasmine-core": "~2.8.0"
+  }
+}

@@ -1,7 +1,6 @@
-describe("Test Suite", function () {
-    var service;
+describe("Test Suite", function () {    
     beforeEach(function () {
-        service = new Service();
+        service = new service.Service();
     });
     it("Get API Data as Not Null", function () {
         var searchText = 'javascript';
