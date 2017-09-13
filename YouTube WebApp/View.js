@@ -10,11 +10,37 @@
        this.TotPages = null;
        this.Service = service;
        window.onload = function () {
+           _this.setupHtmlPage();
            _this.initializeSelectors();
            _this.initializeEvents(window);
        }
    }
    View.prototype = {
+       setupHtmlPage: function () {
+           var divParent = document.getElementById('divParent'),
+               divInner = document.createElement('div'),
+               divPages = document.createElement('div'),
+               divVideoLst = document.createElement('div'),
+               searchInput = document.createElement('input'),
+               searchBtn = document.createElement('button');
+           searchInput.style.width = '500px';
+           searchInput.style.height = '25px';
+           searchInput.id = 'searchInput';
+           searchBtn.id = 'btn';
+           searchBtn.style.width = '75px';
+           searchBtn.style.height = '25px';
+           searchBtn.style.color = 'red';
+           searchBtn.innerText = 'Search';
+           divPages.id = 'divPages';
+           divPages.className = 'pagination';
+           divVideoLst.id = 'videoLst';
+           divInner.innerHTML = '<strong style="color:red"><span>Youtube Web App</span></strong><p/>';
+           divInner.appendChild(searchInput);
+           divInner.appendChild(searchBtn);
+           divParent.appendChild(divInner);
+           divParent.appendChild(divPages);
+           divParent.appendChild(divVideoLst);
+       },
        initializeSelectors: function () {
            this.Elements.searchInput = document.getElementById('searchInput');
            this.Elements.btn = document.getElementById('btn');
@@ -131,9 +157,15 @@
        },
        initSwipeEvents: function (ele) {
            var _this = this;
-           ele.addEventListener('touchstart', function(event){ _this.touchHandler(event, _this);}, false);
-           ele.addEventListener('touchmove', function(event){ _this.touchHandler(event, _this);}, false);
-           ele.addEventListener('touchend', function(event){ _this.touchHandler(event, _this);}, false);
+           ele.addEventListener('touchstart', function (event) {
+               _this.touchHandler(event, _this);
+           }, false);
+           ele.addEventListener('touchmove', function (event) {
+               _this.touchHandler(event, _this);
+           }, false);
+           ele.addEventListener('touchend', function (event) {
+               _this.touchHandler(event, _this);
+           }, false);
        },
        touchHandler: function (event, _this) {
            var touch;

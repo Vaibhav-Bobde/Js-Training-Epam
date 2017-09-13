@@ -1,62 +1,15 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 
-<head>
-    <style>
-        body {
-            background-color: bisque
-        }
-
-        input {
-            border-radius: 1px
-        }
-
-        label {
-            color: red
-        }
-
-        #videoLst {
-            display: flex
-        }
-
-        .pagination {
-            display: inline-block;
-        }
-
-        .pagination a {
-            color: black;
-            float: left;
-            padding: 8px 16px;
-            text-decoration: none;
-            transition: background-color .3s;
-        }
-
-        .pagination a.active {
-            background-color: #4CAF50;
-            color: white;
-        }
-
-        .pagination a:hover:not(.active) {
-            background-color: #ddd;
-        }
-    </style>
+<head>    
+    <link rel="stylesheet" href='..\..\Js-Training-Epam\YouTube WebApp\YoutubeCss.css'></html>
 </head>
+
 <script type="text/javascript" src="..\..\Js-Training-Epam\YouTube WebApp\Service.js"></script>
 <script type="text/javascript" src="..\..\Js-Training-Epam\YouTube WebApp\View.js"></script>
 
 <body background-color:bisque;>
-    <div style="width:initial; height:600px; text-align:center;">
-        <div>
-            <strong style="color:red"><span>Youtube Web App</span></strong>
-            <p/>
-            <input id="searchInput" type="text" style="width:500px; height:25px;" />
-            <button id="btn" style="width:75px; height:25px;color:red;">Search</button>
-        </div>
-        <div id="divPages" class="pagination">
-        </div>
-        <div id="videoLst">
-
-        </div>
+    <div style="width:initial; height:600px; text-align:center;" id='divParent'>
     </div>
 </body>
 <template id="tempVideo">
