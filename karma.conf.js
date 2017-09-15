@@ -17,7 +17,8 @@ module.exports = function(config) {
     files: [
       'test-main.js',
       {pattern: 'test/UnitTest.js', included: true},
-      {pattern: 'YouTube WebApp/Service.js', included: true}
+      {pattern: 'YouTube WebApp/Service.js', included: true},
+      {pattern: 'YouTube WebApp/View.js', included: true}
     ],
 
 

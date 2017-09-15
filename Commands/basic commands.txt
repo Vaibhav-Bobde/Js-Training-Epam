@@ -45,3 +45,5 @@ https://www.infragistics.com/community/blogs/dhananjay_kumar/archive/2016/07/12/
 
 Run karma test case:
 karma start --single-run
+$ karma start --single-run false // without running browser
+https://glebbahmutov.com/blog/debugging-karma-unit-tests/

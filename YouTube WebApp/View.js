@@ -10,9 +10,11 @@
        this.TotPages = null;
        this.Service = service;
        window.onload = function () {
-           _this.setupHtmlPage();
-           _this.initializeSelectors();
-           _this.initializeEvents(window);
+           if (document.getElementById('divParent')) {
+               _this.setupHtmlPage();
+               _this.initializeSelectors();
+               _this.initializeEvents(window);
+           }
        }
    }
    View.prototype = {
